@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">Objectifs_Sportifs</string>
+    <string name="app_name">Sport is life</string>
+    <!-- activity main -->
+    <string name="lbl_derniereActivite">Dernière activité</string>
+    <string name="btn_nouvelleActivite">Nouvelle activité</string>
+    <!-- navigation menu -->
+    <string name="lbl_accueil">Accueil</string>
+    <string name="btn_mesSports">Mes sports</string>
+    <string name="btn_mesObjectifs">Mes Objectifs</string>
+    <string name="btn_mesActivites">Mes Activités</string>
+    <string name="btn_quitter">Quitter</string>
 </resources>

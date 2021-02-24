@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:id="@+id/menu"
+    android:background="#EEEEEE">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:gravity="center"
+        android:textColor="#FFFFFF"
+        android:background="#000000"
+        android:id="@+id/accueil"
+        android:text="@string/lbl_accueil"/>
+
+    <TextView
+        android:id="@+id/mesSports"
+        android:text="@string/btn_mesSports"
+        style="@style/button"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/mesObjectifs"
+        android:text="@string/btn_mesObjectifs"
+        style="@style/button"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/mesActivites"
+        android:text="@string/btn_mesActivites"
+        style="@style/button"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/quitter"
+        android:text="@string/btn_quitter"
+        style="@style/button"
+        android:layout_marginTop="10dp"/>
+
+</LinearLayout>

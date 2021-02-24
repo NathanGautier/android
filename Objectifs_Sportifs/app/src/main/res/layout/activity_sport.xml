@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_sport_drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".SportActivity"
+    tools:openDrawer="start">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/saisieSport"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/enregistrer"
+            android:text="Enregistrer"
+            android:layout_below="@+id/saisieSport"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/afficheSport"
+            android:layout_below="@+id/enregistrer"
+            android:text="sport"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rechercher"
+            android:text="Rechercher"
+            android:layout_below="@+id/afficheSport"/>
+
+    </RelativeLayout>
+
+    <com.test.objectifs_sportifs.NavigationMenu
+        android:layout_gravity="start"
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content" />
+
+</androidx.drawerlayout.widget.DrawerLayout>
