@@ -10,6 +10,7 @@ faire heriter les classes de la classe classeMere qui possede une connexion a la
 ## TODO
 
 - fonction quitter
+- lorsqu'on ajoute un sport, vider le champ
 
 
 ##  Mettre a jour la BDD
