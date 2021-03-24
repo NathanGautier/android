@@ -9,4 +9,10 @@
     <string name="btn_mesObjectifs">Mes Objectifs</string>
     <string name="btn_mesActivites">Mes Activités</string>
     <string name="btn_quitter">Quitter</string>
+    <!-- activity sport -->
+    <string name="lbl_titreSport">Mes Sports</string>
+    <!-- activity activite -->
+    <string name="lbl_titreVisualisationActivite">Mes Activités</string>
+    <string name="lbl_titreAjoutActivite">Nouvelle Activité</string>
+    <string name="btn_validerActivite">Valider</string>
 </resources>

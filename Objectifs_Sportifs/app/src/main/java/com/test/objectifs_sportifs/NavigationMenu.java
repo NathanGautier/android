@@ -64,6 +64,7 @@ public class NavigationMenu extends FrameLayout {
 
         // ecoute du bouton quitter
         findViewById(R.id.quitter).setOnClickListener(v -> {
+            // TODO => ne quitte pas vraiment si on navigue dans plusieurs onglets
             System.exit(0);
         });
     }
