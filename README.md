@@ -7,6 +7,10 @@ une activité peut faire avancer plusieurs objectifs
 faire heriter les classes de la classe classeMere qui possede une connexion a la BDD
 
 
+## TODO
+
+- fonction quitter
+
 
 ##  Mettre a jour la BDD
 
