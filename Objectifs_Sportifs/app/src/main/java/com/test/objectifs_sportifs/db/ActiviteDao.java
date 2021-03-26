@@ -12,9 +12,6 @@ public interface ActiviteDao {
     @Query("SELECT * FROM activite WHERE id = :first LIMIT 1")
     Activite trouverActiviteParId(int first);
 
-    @Query("SELECT * FROM activite WHERE libelle = :first")
-    Activite trouverActiviteParLibelle(String first);
-
     @Query("SELECT * FROM activite")
     List<Activite> trouverToutesLesActivites();
 

@@ -11,8 +11,17 @@
     <string name="btn_quitter">Quitter</string>
     <!-- activity sport -->
     <string name="lbl_titreSport">Mes Sports</string>
+    <string name="btn_enregistrerSport">Enregistrer</string>
+    <string name="btn_rechercherSport">Rechercher</string>
+    <string name="chk_dureeSport">Objectif de Durée</string>
+    <string name="chk_distanceSport">Objectif de Distance</string>
     <!-- activity activite -->
     <string name="lbl_titreVisualisationActivite">Mes Activités</string>
-    <string name="lbl_titreAjoutActivite">Nouvelle Activité</string>
+    <string name="titreAjoutActivite">Nouvelle Activité</string>
+    <string name="txt_dateAjoutActivite">Date</string>
+    <string name="txt_distanceAjoutActivite">Distance en Km</string>
+    <string name="txt_dureeAjoutActivite">Durée</string>
+    <string name="btn_retourActivite">Retour</string>
     <string name="btn_validerActivite">Valider</string>
+    <string name="btn_demarrerActivite">Démarrer</string>
 </resources>

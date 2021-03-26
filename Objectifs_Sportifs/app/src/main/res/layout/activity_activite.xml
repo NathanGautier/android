@@ -31,15 +31,14 @@
             android:layout_marginBottom="10dp"
             android:layout_centerInParent="true"
             android:id="@+id/demarrerActivite"
-            android:text="Démarrer"
+            android:text="@string/titreAjoutActivite"
             android:layout_below="@+id/titreVisualisationActivite"/>
 
         <ListView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:id="@+id/historiqueActivite"
-            android:layout_below="@+id/demarrerActivite"
-            android:text="activite"/>
+            android:layout_below="@+id/demarrerActivite" />
 
     </RelativeLayout>
 
@@ -57,13 +56,13 @@
             android:textAlignment="center"
             android:layout_centerInParent="false"
             android:id="@+id/titreAjoutActivite"
-            android:text="@string/lbl_titreAjoutActivite" />
+            android:text="@string/titreAjoutActivite" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/lblDateAjoutActivite"
-            android:text="Date"
+            android:text="@string/txt_dateAjoutActivite"
             android:textSize="15sp"
             android:layout_marginTop="10dp"
             android:labelFor="@+id/saisieDateAjoutActivite"
@@ -93,7 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/lblDureeAjoutActivite"
-            android:text="Durée"
+            android:text="@string/txt_dureeAjoutActivite"
             android:textSize="15sp"
             android:layout_below="@+id/listeSportsAjoutActivite" />
 
@@ -109,7 +108,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/lblDistanceAjoutActivite"
-            android:text="Distance en Km"
+            android:text="@string/txt_distanceAjoutActivite"
             android:textSize="15sp"
             android:layout_marginTop="20dp"
             android:labelFor="@+id/saisieDistanceAjoutActivite"
@@ -130,11 +129,22 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="60dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/saisieDistanceAjoutActivite"
+            android:id="@+id/retourAjoutActivite"
+            android:text="@string/btn_retourActivite" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="60dp"
+            android:layout_alignParentEnd="true"
             android:layout_below="@+id/saisieDistanceAjoutActivite"
             android:id="@+id/validerAjoutActivite"
-            android:text="@string/btn_validerActivite" />
+            android:text="@string/btn_demarrerActivite" />
 
         <!-- TODO => mettre les texts dans le string.xml -->
 

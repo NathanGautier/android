@@ -13,9 +13,6 @@ public class Activite {
     @PrimaryKey(autoGenerate = true)
     public int id;
 
-    @ColumnInfo(name = "libelle")
-    public String libelle;
-
     @ColumnInfo(name = "date")
     public int date;
 

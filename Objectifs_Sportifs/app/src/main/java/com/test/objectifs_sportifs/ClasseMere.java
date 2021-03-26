@@ -1,5 +1,7 @@
 package com.test.objectifs_sportifs;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -19,6 +21,23 @@ public abstract class ClasseMere extends AppCompatActivity {
 
         db = Room.databaseBuilder(getApplicationContext(),
                 AppDatabase.class, "database-name").allowMainThreadQueries().build();
+    }
+
+    //creation d'une popin
+    public void appelAlerteDialog(Context context, String message) {
+        new AlertDialog.Builder(context)
+                .setTitle("Attention")
+                .setMessage(message)
+                .setPositiveButton("ok", null)
+                .show();
+    }
+
+    // fonction qui met en forme la date
+    public String miseEnFormeDeLaDate(Integer uneDate) {
+        String laDate = uneDate.toString();
+        laDate = laDate.substring(0,2) + "/" + laDate.substring(2,4) + "/" + laDate.substring(4);
+
+        return laDate;
     }
 
     public AppDatabase appDb(){

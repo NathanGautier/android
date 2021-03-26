@@ -1,19 +1,12 @@
 package com.test.objectifs_sportifs;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
-
-import com.test.objectifs_sportifs.db.AppDatabase;
 import com.test.objectifs_sportifs.db.Sport;
 
 import java.util.ArrayList;
@@ -28,16 +21,39 @@ public class SportActivity extends ClasseMere {
 
         // variables
         ListView afficheSport = findViewById(R.id.afficheSport);
-        List<String> listeLibelleSports = new ArrayList<String>();
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
+        List<String> listeLibelleSports = new ArrayList<>();
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>
                 (this, android.R.layout.simple_list_item_1, listeLibelleSports);
         afficheSport.setAdapter(arrayAdapter);
 
+        final EditText saisieLibelleSport = findViewById(R.id.saisieSport);
+        final CheckBox saisieDureeSport = findViewById(R.id.chkDureeSport);
+        final CheckBox saisieDistanceSport = findViewById(R.id.chkDistanceSport);
+
         // partie pour l'ecouteur du bouton ENREGISTRER
         findViewById(R.id.enregistrer).setOnClickListener(v -> {
-            EditText name = findViewById(R.id.saisieSport);
-            long id = enregistrerSport(name.getText().toString());
-            Toast.makeText(SportActivity.this, "Sport enregistré avec l'id : " + id, Toast.LENGTH_LONG).show();
+            // on récupère le libellé
+            String monLibelle = saisieLibelleSport.getText().toString();
+            if (monLibelle.equals("") || monLibelle == null) {
+                appelAlerteDialog(SportActivity.this, "Veuillez renseigner le nom du sport");
+                return;
+            }
+
+            // on regarde quels objectifs peuvent etre créés
+            if (!saisieDureeSport.isChecked() && !saisieDistanceSport.isChecked()) {
+                appelAlerteDialog(SportActivity.this, "Veuillez cocher au moins un objectif");
+                return;
+            }
+            boolean objectifDuree = saisieDureeSport.isChecked();
+            boolean objectifDistance = saisieDistanceSport.isChecked();
+
+            // on enregistre le nouveau sport en BDD
+            long id = enregistrerSport(monLibelle, objectifDuree, objectifDistance);
+            if (id == 0) {
+                Toast.makeText(SportActivity.this, "Erreur lors de l'enregistrement du sport : " + monLibelle, Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(SportActivity.this, "Sport " + monLibelle + " enregistré avec l'id : " + id, Toast.LENGTH_LONG).show();
+            }
         });
 
         // partie pour l'ecouteur du bouton RECHERCHER
@@ -53,25 +69,28 @@ public class SportActivity extends ClasseMere {
                 }
             }
             arrayAdapter.notifyDataSetChanged();
-            //Toast.makeText(SportActivity.this, "libellé pour l'id : " + sport, Toast.LENGTH_LONG).show();
-
         });
     }
 
     // fonction qui enregistre un sport
-    private long enregistrerSport(String libelle) {
-        Sport s = new Sport();
-        s.libelle = libelle;
-        s.distance = false;
+    private long enregistrerSport(String libelle, boolean duree, boolean distance) {
+        long res;
+        try {
+            Sport s = new Sport();
+            s.libelle = libelle;
+            s.duree = duree;
+            s.distance = distance;
+            res = appDb().sportDao().insert(s);
+        } catch (Exception e) {
+            res = 0;
+        }
 
-        return appDb().sportDao().insert(s);
+        return res;
     }
 
     // fonction qui récupère tous les sports
     public List<Sport> tousLesSports() {
-        List<Sport> sports = appDb().sportDao().trouverTousLesSports();
-
-        return sports;
+        return appDb().sportDao().trouverTousLesSports();
     }
 
 }

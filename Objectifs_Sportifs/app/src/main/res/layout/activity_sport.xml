@@ -26,28 +26,47 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/saisieSport"
-            android:layout_below="@+id/titreSport" />
+            android:autofillHints="no"
+            android:inputType="text"
+            android:layout_below="@+id/titreSport"
+            tools:ignore="LabelFor" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/saisieSport"
+            android:text="@string/chk_dureeSport"
+            android:id="@+id/chkDureeSport"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/saisieSport"
+            android:layout_toEndOf="@+id/chkDureeSport"
+            android:text="@string/chk_distanceSport"
+            android:id="@+id/chkDistanceSport"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/enregistrer"
-            android:text="Enregistrer"
-            android:layout_below="@+id/saisieSport"/>
-
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/afficheSport"
-            android:layout_below="@+id/enregistrer"
-            android:text="sport"/>
+            android:text="@string/btn_enregistrerSport"
+            android:layout_below="@+id/chkDureeSport"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/rechercher"
-            android:text="Rechercher"
-            android:layout_below="@+id/afficheSport"/>
+            android:text="@string/btn_rechercherSport"
+            android:layout_below="@+id/enregistrer"/>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/afficheSport"
+            android:layout_below="@+id/rechercher" />
+
+
 
     </RelativeLayout>
 

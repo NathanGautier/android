@@ -1,7 +1,5 @@
 package com.test.objectifs_sportifs;
 
-import android.app.AlertDialog;
-import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -30,8 +28,8 @@ public class ActiviteActivity extends ClasseMere {
 
         // variables
         ListView afficheActivite = findViewById(R.id.historiqueActivite);
-        List<String> listeLibelleActivites = new ArrayList<String>();
-        final ArrayAdapter<String> arrayAdapterListeActivite = new ArrayAdapter<String>
+        List<String> listeLibelleActivites = new ArrayList<>();
+        final ArrayAdapter<String> arrayAdapterListeActivite = new ArrayAdapter<>
                 (this, android.R.layout.simple_list_item_1, listeLibelleActivites);
         afficheActivite.setAdapter(arrayAdapterListeActivite);
 
@@ -43,25 +41,18 @@ public class ActiviteActivity extends ClasseMere {
             listeLibelleActivites.add("Ajoute vite une activité !!");
         } else {
             for(Activite uneActivite : listeDesActivites) {
-                listeLibelleActivites.add(uneActivite.libelle);
+                String leLibelle = miseEnFormeDeLaDate(uneActivite.date);
+                Sport leSport = unSportAvecId(uneActivite.idSport);
+                leLibelle += " " + leSport.libelle;
+                listeLibelleActivites.add(leLibelle);
             }
         }
         arrayAdapterListeActivite.notifyDataSetChanged();
 
         // ecouteur du bouton demarrerActivite
-        findViewById(R.id.demarrerActivite).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                // on masque l'écran de visualisation pour rendre visible l'ajout / ou l'inverse
-                //partie visualisation
-                View displayVisualisation = findViewById(R.id.layoutVisualisationActivite);
-                displayVisualisation.setVisibility(displayVisualisation.getVisibility() == View.INVISIBLE ? View.VISIBLE : View.INVISIBLE);
-
-                // partie ajout
-                View displayAjout = findViewById(R.id.layoutAjoutActivite);
-                displayAjout.setVisibility(displayAjout.getVisibility() == View.INVISIBLE ? View.VISIBLE : View.INVISIBLE);
-            }
+        findViewById(R.id.demarrerActivite).setOnClickListener(v -> {
+            // on masque l'écran de visualisation pour rendre visible l'ajout / ou l'inverse
+            modifierVisibiliteActivite();
         });
 
 
@@ -75,7 +66,7 @@ public class ActiviteActivity extends ClasseMere {
         final EditText distanceAjoutActivite = findViewById(R.id.saisieDistanceAjoutActivite);
 
         // remplissage de la liste des sports
-        List<String> listeSportsAjoutActivite = new ArrayList<String>();
+        List<String> listeSportsAjoutActivite = new ArrayList<>();
         final ArrayAdapter<String> arrayAdapterListeSport = new ArrayAdapter
                 (this, android.R.layout.simple_spinner_item, listeSportsAjoutActivite);
         afficheSportAjoutActivite.setAdapter(arrayAdapterListeSport);
@@ -96,28 +87,33 @@ public class ActiviteActivity extends ClasseMere {
         // on met le timePicker pour le choix de la durée en format 24h avec une initialisation a 0 heure et 0 minutes
         pickerDureeAjoutActivite.setIs24HourView(true);
         if (Build.VERSION.SDK_INT >= 23 ) {
-            pickerDureeAjoutActivite.setHour(00);
-            pickerDureeAjoutActivite.setMinute(00);
+            pickerDureeAjoutActivite.setHour(0);
+            pickerDureeAjoutActivite.setMinute(0);
         }
 
-        // ecouteur pour le timePicker pour récupérer l'heure et les minutes
+        // ecouteur pour le bouton de retour
+        findViewById(R.id.retourAjoutActivite).setOnClickListener(v -> {
+            // on masque l'écran de visualisation pour rendre visible l'ajout / ou l'inverse
+            modifierVisibiliteActivite();
+        });
+
+        // ecouteur pour le bouton de validation
         findViewById(R.id.validerAjoutActivite).setOnClickListener(new View.OnClickListener() {
-            String monLibelle;
             float maDuree, maDistance;
             int maDate, monSport_id;
             final boolean estTerminer = false;
 
             @Override
             public void onClick(View v) {
-                // on récupère le libelle
-                monLibelle = "test";
-                // TODO => voir si une activite a besoin d'un libelle, si oui le rajouter un EditText dans le xml
-
                 // on récupère la date
                 String tempDate = dateAjoutActivite.getText().toString();
                 maDate=0;
-                if (!"".equals(tempDate))
-                    maDate=Integer.parseInt(tempDate);
+                if (!"".equals(tempDate)) {
+                    maDate = miseEnFormeEnregistreDate(tempDate);
+                } else {
+                    appelAlerteDialog(ActiviteActivity.this, "Veuillez renseigner une date");
+                    return;
+                }
 
                 // mise en forme de la durée
                 maDuree = miseEnFormeDuree();
@@ -142,7 +138,6 @@ public class ActiviteActivity extends ClasseMere {
                 }
 
                 // TODO => a supprimer quand ce sera ok
-                System.out.println("libelle : " + monLibelle);
                 System.out.println("date : " + maDate);
                 System.out.println("duree : " + maDuree);
                 System.out.println("distance : " + maDistance);
@@ -150,16 +145,38 @@ public class ActiviteActivity extends ClasseMere {
                 System.out.println("sport_id : " + monSport_id);
 
                 // on enregistre la nouvelle activité en BDD
-                long id = enregistrerNouvelleActivite(monLibelle, maDate, maDuree, maDistance, estTerminer, monSport_id);
+                long id = enregistrerNouvelleActivite(maDate, maDuree, maDistance, estTerminer, monSport_id);
                 if (id == 0) {
-                    Toast.makeText(ActiviteActivity.this, "Erreur lors de l'enregistrement de l'activité : " + monLibelle, Toast.LENGTH_LONG).show();
+                    Toast.makeText(ActiviteActivity.this, "Erreur lors de l'enregistrement de l'activité : ", Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(ActiviteActivity.this, "Activité " + monLibelle + " enregistrée avec l'id : " + id, Toast.LENGTH_LONG).show();
+                    Toast.makeText(ActiviteActivity.this, "Activité enregistrée avec l'id : " + id, Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
 
+
+    // fonction qui modifie la visibilitée de la partie Visualisation et Ajout
+    private void modifierVisibiliteActivite() {
+        //partie visualisation
+        View displayVisualisation = findViewById(R.id.layoutVisualisationActivite);
+        displayVisualisation.setVisibility(displayVisualisation.getVisibility() == View.INVISIBLE ? View.VISIBLE : View.INVISIBLE);
+
+        // partie ajout
+        View displayAjout = findViewById(R.id.layoutAjoutActivite);
+        displayAjout.setVisibility(displayAjout.getVisibility() == View.INVISIBLE ? View.VISIBLE : View.INVISIBLE);
+    }
+
+    // fonction qui met en forme la date
+    private int miseEnFormeEnregistreDate(String uneDate) {
+        String laDate;
+
+        laDate = uneDate.substring(0, 2);
+        laDate += uneDate.substring(3, 5);
+        laDate += uneDate.substring(6);
+
+        return Integer.parseInt(laDate);
+    }
 
     // fonction qui met en forme la durée
     private Float miseEnFormeDuree() {
@@ -177,32 +194,26 @@ public class ActiviteActivity extends ClasseMere {
         return heure + minute * 0.01f;
     }
 
-    private void appelAlerteDialog(Context context, String message) {
-        new AlertDialog.Builder(context)
-                .setTitle("Attention")
-                .setMessage(message)
-                .setPositiveButton("ok", null)
-                .show();
-    }
-
     // fonction qui récupère tous les sports
     private List<Activite> toutesLesActivites() {
-        List<Activite> activites = appDb().activiteDao().trouverToutesLesActivites();
-        return activites;
+        return appDb().activiteDao().trouverToutesLesActivites();
     }
 
     // fonction qui récupère tous les sports
     public List<Sport> tousLesSports() {
-        List<Sport> sports = appDb().sportDao().trouverTousLesSports();
-        return sports;
+        return appDb().sportDao().trouverTousLesSports();
+    }
+
+    // fonction qui recupere un sport via un ID
+    public Sport unSportAvecId(int idSport) {
+        return appDb().sportDao().trouverSportParId(idSport);
     }
 
     // fonction qui enregistre un sport
-    private long enregistrerNouvelleActivite(String libelle, int date, Float duree, Float distance, boolean terminer, int idSport) {
+    private long enregistrerNouvelleActivite(int date, Float duree, Float distance, boolean terminer, int idSport) {
         long res;
         try {
             Activite a = new Activite();
-            a.libelle = libelle;
             a.date = date;
             a.duree = duree;
             a.distance = distance;

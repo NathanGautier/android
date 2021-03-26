@@ -12,6 +12,9 @@ public class Sport {
     @ColumnInfo(name = "libelle")
     public String libelle;
 
+    @ColumnInfo(name = "duree")
+    public boolean duree;
+
     @ColumnInfo(name = "distance")
-    public boolean distance = false;
+    public boolean distance;
 }

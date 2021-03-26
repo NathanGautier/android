@@ -2,16 +2,11 @@ package com.test.objectifs_sportifs;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.SeekBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 
 public class NavigationMenu extends FrameLayout {
 
