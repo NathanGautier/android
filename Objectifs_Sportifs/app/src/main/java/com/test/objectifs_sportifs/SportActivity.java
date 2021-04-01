@@ -53,6 +53,7 @@ public class SportActivity extends ClasseMere {
                 Toast.makeText(SportActivity.this, "Erreur lors de l'enregistrement du sport : " + monLibelle, Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(SportActivity.this, "Sport " + monLibelle + " enregistré avec l'id : " + id, Toast.LENGTH_LONG).show();
+                viderZonesSaisies();
             }
         });
 
@@ -72,6 +73,19 @@ public class SportActivity extends ClasseMere {
         });
     }
 
+    // fonction qui vide les zones de saisie et decoche les checkbox
+    private void viderZonesSaisies() {
+        // libellé
+        EditText libelleSport = findViewById(R.id.saisieSport);
+        libelleSport.setText("");
+        // checkbox durée
+        CheckBox dureeSport = findViewById(R.id.chkDureeSport);
+        dureeSport.setChecked(false);
+        // checkbox distance
+        CheckBox distanceSport = findViewById(R.id.chkDistanceSport);
+        distanceSport.setChecked(false);
+    }
+
     // fonction qui enregistre un sport
     private long enregistrerSport(String libelle, boolean duree, boolean distance) {
         long res;
@@ -84,7 +98,6 @@ public class SportActivity extends ClasseMere {
         } catch (Exception e) {
             res = 0;
         }
-
         return res;
     }
 

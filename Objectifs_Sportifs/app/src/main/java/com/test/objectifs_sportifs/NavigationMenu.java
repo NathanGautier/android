@@ -3,6 +3,7 @@ package com.test.objectifs_sportifs;
 import android.content.Context;
 import android.content.Intent;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
@@ -62,5 +63,6 @@ public class NavigationMenu extends FrameLayout {
             // TODO => ne quitte pas vraiment si on navigue dans plusieurs onglets
             System.exit(0);
         });
+
     }
 }

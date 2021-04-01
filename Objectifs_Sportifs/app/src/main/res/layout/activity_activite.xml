@@ -9,6 +9,7 @@
     tools:context=".ActiviteActivity"
     tools:openDrawer="start">
 
+    <!-- Partie Visualisation -->
     <RelativeLayout
         android:id="@+id/layoutVisualisationActivite"
         android:layout_width="match_parent"
@@ -42,6 +43,7 @@
 
     </RelativeLayout>
 
+    <!-- Partie Ajout -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

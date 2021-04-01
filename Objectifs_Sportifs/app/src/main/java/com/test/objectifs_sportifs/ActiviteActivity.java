@@ -4,6 +4,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -89,6 +90,9 @@ public class ActiviteActivity extends ClasseMere {
         if (Build.VERSION.SDK_INT >= 23 ) {
             pickerDureeAjoutActivite.setHour(0);
             pickerDureeAjoutActivite.setMinute(0);
+        } else {
+            pickerDureeAjoutActivite.setCurrentHour(0);
+            pickerDureeAjoutActivite.setCurrentMinute(0);
         }
 
         // ecouteur pour le bouton de retour
@@ -150,6 +154,7 @@ public class ActiviteActivity extends ClasseMere {
                     Toast.makeText(ActiviteActivity.this, "Erreur lors de l'enregistrement de l'activité : ", Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(ActiviteActivity.this, "Activité enregistrée avec l'id : " + id, Toast.LENGTH_LONG).show();
+                    viderZonesSaisies();
                 }
             }
         });
@@ -192,6 +197,31 @@ public class ActiviteActivity extends ClasseMere {
         }
         // l'heure se trouve avant la virgule et les minutes se trouvent apres la virgule
         return heure + minute * 0.01f;
+    }
+
+    // fonction qui vide les zones de saisie et decoche les checkbox
+    private void viderZonesSaisies() {
+        // date
+        EditText ajoutDate = findViewById(R.id.saisieDateAjoutActivite);
+        ajoutDate.setText("");
+
+        // sport
+        // TODO => remettre le choix du sport sur id=1 (si y a assez de temps pour le dev sinon pas grave)
+
+        // durée
+        TimePicker ajoutDuree = findViewById(R.id.choixDureeAjoutActivite);
+        if (Build.VERSION.SDK_INT >= 23 ){
+            ajoutDuree.setMinute(0);
+            ajoutDuree.setHour(0);
+        }
+        else {
+            ajoutDuree.setCurrentMinute(0);
+            ajoutDuree.setCurrentHour(0);
+        }
+
+        // distance
+        EditText ajoutDistance = findViewById(R.id.saisieDistanceAjoutActivite);
+        ajoutDistance.setText("");
     }
 
     // fonction qui récupère tous les sports
