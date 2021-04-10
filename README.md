@@ -65,16 +65,16 @@ Je n'ai pas eu le temps de faire des tests unitaires.
 ### Maquettes
 
 *Page d'accueil* (activity_main.xml)
-![Screenshot](\images\accueil.png)
+![Screenshot](images\accueil.png)
 
 *Page Sports* (activity_sport.xml)
-![Screenshot](\images\lesSports.png)
+![Screenshot](images\lesSports.png)
 
 *Page de visualisation Objectifs* (activity_objectif.xml)
-![Screenshot](\images\lesObjectifs.png)
+![Screenshot](images\lesObjectifs.png)
 
 *Page de visualisation Acvtivités* (activity_activite.xml)
-![Screenshot](\images\lesActivites.png)
+![Screenshot](images\lesActivites.png)
 
 *Page d'ajout Activités* (activity_activite.xml)
-![Screenshot](\images\lesActivitesAjouter.png)
+![Screenshot](images\lesActivitesAjouter.png)
