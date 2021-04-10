@@ -4,7 +4,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -39,7 +38,7 @@ public class ActiviteActivity extends ClasseMere {
         List<Activite> listeDesActivites = toutesLesActivites();
 
         if(listeDesActivites.size() <= 0) {
-            listeLibelleActivites.add("Ajoute vite une activité !!");
+            listeLibelleActivites.add("Ajoutes vite une activité !!");
         } else {
             for(Activite uneActivite : listeDesActivites) {
                 String leLibelle = miseEnFormeDeLaDate(uneActivite.date);
@@ -85,6 +84,8 @@ public class ActiviteActivity extends ClasseMere {
         }
         arrayAdapterListeSport.notifyDataSetChanged();
 
+        // TODO => afficher soit la saisie pour la distance soit la saisie pour la durée, en fonction du SPORT
+
         // on met le timePicker pour le choix de la durée en format 24h avec une initialisation a 0 heure et 0 minutes
         pickerDureeAjoutActivite.setIs24HourView(true);
         if (Build.VERSION.SDK_INT >= 23 ) {
@@ -121,7 +122,7 @@ public class ActiviteActivity extends ClasseMere {
 
                 // mise en forme de la durée
                 maDuree = miseEnFormeDuree();
-                if (maDuree == 0) {
+                if (maDuree <= 0) {
                     appelAlerteDialog(ActiviteActivity.this, "Veuillez renseigner une durée supérieure a 0");
                     return;
                 }
@@ -129,8 +130,8 @@ public class ActiviteActivity extends ClasseMere {
 
                 // on récupère la distance
                 maDistance = Float.parseFloat(distanceAjoutActivite.getText().toString());
-                if (maDistance == 0) {
-                    appelAlerteDialog(ActiviteActivity.this, "Veuillez renseigner une distance supérieure a 0");
+                if (maDistance <= 0) {
+                    appelAlerteDialog(ActiviteActivity.this, "Veuillez renseigner une distance supérieure à 0");
                     return;
                 }
 
@@ -151,10 +152,11 @@ public class ActiviteActivity extends ClasseMere {
                 // on enregistre la nouvelle activité en BDD
                 long id = enregistrerNouvelleActivite(maDate, maDuree, maDistance, estTerminer, monSport_id);
                 if (id == 0) {
-                    Toast.makeText(ActiviteActivity.this, "Erreur lors de l'enregistrement de l'activité : ", Toast.LENGTH_LONG).show();
+                    Toast.makeText(ActiviteActivity.this, "Erreur lors de l'enregistrement de l'activité.", Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(ActiviteActivity.this, "Activité enregistrée avec l'id : " + id, Toast.LENGTH_LONG).show();
                     viderZonesSaisies();
+                    // TODO => mettre a jour la liste d'activités
                 }
             }
         });
@@ -224,7 +226,7 @@ public class ActiviteActivity extends ClasseMere {
         ajoutDistance.setText("");
     }
 
-    // fonction qui récupère tous les sports
+    // fonction qui récupère toutes les Activités
     private List<Activite> toutesLesActivites() {
         return appDb().activiteDao().trouverToutesLesActivites();
     }
@@ -239,7 +241,7 @@ public class ActiviteActivity extends ClasseMere {
         return appDb().sportDao().trouverSportParId(idSport);
     }
 
-    // fonction qui enregistre un sport
+    // fonction qui enregistre une activite
     private long enregistrerNouvelleActivite(int date, Float duree, Float distance, boolean terminer, int idSport) {
         long res;
         try {

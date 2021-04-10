@@ -13,28 +13,19 @@ public class Objectif {
     public String libelle;
 
     @ColumnInfo(name = "dateDu")
-    public String dateDu;
+    public int dateDu;
 
     @ColumnInfo(name = "dateAu")
-    public String dateAu;
-
-    @ColumnInfo(name = "heure")
-    public int heure;
-
-    @ColumnInfo(name = "heureAvancee")
-    public int heureAvancee;
-
-    @ColumnInfo(name = "minute")
-    public int minute;
-
-    @ColumnInfo(name = "minuteAvancee")
-    public int minuteAvancee;
+    public int dateAu;
 
     @ColumnInfo(name = "distance")
     public boolean distance;
 
-    @ColumnInfo(name = "distanceAvancee")
-    public int distanceAvancee;
+    @ColumnInfo(name = "avancee")
+    public float avancee;
+
+    @ColumnInfo(name = "total")
+    public float total;
 
     @ColumnInfo(name = "terminer")
     public boolean terminer;

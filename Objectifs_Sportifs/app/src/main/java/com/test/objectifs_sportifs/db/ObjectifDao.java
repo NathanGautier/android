@@ -16,7 +16,10 @@ public interface ObjectifDao {
     List<Objectif> trouverTousLesObjectifs();
 
     @Query("SELECT * FROM objectif WHERE terminer = false")
-    List<Objectif> trouverObjectifsEnCours();
+    List<Objectif> trouverTousLesObjectifsEnCours();
+
+    @Query("SELECT * FROM objectif WHERE terminer = true")
+    List<Objectif> trouverTousLesObjectifsTerminer();
 
     @Insert
     long insert(Objectif objectif);

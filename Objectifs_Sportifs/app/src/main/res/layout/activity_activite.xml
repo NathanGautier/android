@@ -148,8 +148,6 @@
             android:id="@+id/validerAjoutActivite"
             android:text="@string/btn_demarrerActivite" />
 
-        <!-- TODO => mettre les texts dans le string.xml -->
-
     </RelativeLayout>
 
     <com.test.objectifs_sportifs.NavigationMenu

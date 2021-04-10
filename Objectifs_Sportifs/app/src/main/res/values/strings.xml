@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Sport is life</string>
     <!-- activity main -->
     <string name="lbl_derniereActivite">Dernière activité</string>
@@ -24,4 +24,16 @@
     <string name="btn_retourActivite">Retour</string>
     <string name="btn_validerActivite">Valider</string>
     <string name="btn_demarrerActivite">Démarrer</string>
+    <!-- activity objectif -->
+    <string name="lbl_titreVisualisationObjectif">Mes Objectifs</string>
+    <string name="btn_nouveauObjectif">Nouvel Objectif</string>
+    <string name="txt_listeEnCoursVisualisationObjectif">Mes Objectifs en Cours</string>
+    <string name="txt_listeHistoriqueVisualisationObjectif">Mes Objectifs Terminés</string>
+    <string name="lbl_titreAjoutObjectif">Nouvel Objectif</string>
+    <string name="lbl_libelleAjoutObjectif">Nom de Objectif</string>
+    <string name="lbl_dateAuAjoutObjectif">Date de limite de fin pour Objectif</string>
+    <string name="chk_distanceAjoutObjectif">Objectif de Distance (par défaut Objectif est de temps)</string>
+    <string name="lbl_saisiObjectifAjoutObjectif">Saisir votre objectif</string>
+    <string name="btn_retourObjectif">Retour</string>
+    <string name="btn_demarrerObjectif">Démarrer</string>
 </resources>
