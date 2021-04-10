@@ -23,6 +23,8 @@ La branche develop a été merge sur master au moment de rendre le projet, avec 
 
 Je n'ai pas fais de tag / version / release. Surtout par manque de temps pour y réfléchir.
 
+Dans l'onglet projet du repository, il y a le projet *Objectifs Sportifs* avec mon kanban.
+
 ## Librairie
 
 J'ai utilisé la librairie **ROOM** pour la base de données, ce qui m'a facilité le travail pour la création de la base de données, ca m'a aussi fait gagner du temps.
