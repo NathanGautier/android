@@ -1,0 +1,39 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Sport is life</string>
+    <!-- activity main -->
+    <string name="lbl_derniereActivite">Dernière activité</string>
+    <string name="btn_nouvelleActivite">Nouvelle activité</string>
+    <!-- navigation menu -->
+    <string name="lbl_accueil">Accueil</string>
+    <string name="btn_mesSports">Mes sports</string>
+    <string name="btn_mesObjectifs">Mes Objectifs</string>
+    <string name="btn_mesActivites">Mes Activités</string>
+    <string name="btn_quitter">Quitter</string>
+    <!-- activity sport -->
+    <string name="lbl_titreSport">Mes Sports</string>
+    <string name="btn_enregistrerSport">Enregistrer</string>
+    <string name="btn_rechercherSport">Rechercher</string>
+    <string name="chk_dureeSport">Objectif de Durée</string>
+    <string name="chk_distanceSport">Objectif de Distance</string>
+    <!-- activity activite -->
+    <string name="lbl_titreVisualisationActivite">Mes Activités</string>
+    <string name="titreAjoutActivite">Nouvelle Activité</string>
+    <string name="txt_dateAjoutActivite">Date</string>
+    <string name="txt_distanceAjoutActivite">Distance en Km</string>
+    <string name="txt_dureeAjoutActivite">Durée</string>
+    <string name="btn_retourActivite">Retour</string>
+    <string name="btn_validerActivite">Valider</string>
+    <string name="btn_demarrerActivite">Démarrer</string>
+    <!-- activity objectif -->
+    <string name="lbl_titreVisualisationObjectif">Mes Objectifs</string>
+    <string name="btn_nouveauObjectif">Nouvel Objectif</string>
+    <string name="txt_listeEnCoursVisualisationObjectif">Mes Objectifs en Cours</string>
+    <string name="txt_listeHistoriqueVisualisationObjectif">Mes Objectifs Terminés</string>
+    <string name="lbl_titreAjoutObjectif">Nouvel Objectif</string>
+    <string name="lbl_libelleAjoutObjectif">Nom de Objectif</string>
+    <string name="lbl_dateAuAjoutObjectif">Date de limite de fin pour Objectif</string>
+    <string name="chk_distanceAjoutObjectif">Objectif de Distance (par défaut Objectif est de temps)</string>
+    <string name="lbl_saisiObjectifAjoutObjectif">Saisir votre objectif</string>
+    <string name="btn_retourObjectif">Retour</string>
+    <string name="btn_demarrerObjectif">Démarrer</string>
+</resources>
