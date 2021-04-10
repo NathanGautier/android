@@ -62,7 +62,7 @@ Je n'ai pas eu le temps de faire des tests unitaires.
   - Il n'y a pas de suivi GPS / chronomètre
 - L'affichage d'une carte pour voir le suivi GPS n'est pas développé
 
-### Maquettes
+### Maquettes (images non contractuelles !)
 
 *Page d'accueil* (activity_main.xml)
 ![id](/images/accueil.png)
