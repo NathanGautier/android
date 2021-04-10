@@ -19,7 +19,7 @@ Organisation de package
 ## GitHub
 
 J'ai créé une branche develop qui comporte le code en développement.
-La branche develop a été merge sur master au moment de rendre le projet, avec un code éxécutable.
+La branche develop a été merge sur main au moment de rendre le projet, avec un code éxécutable.
 
 Je n'ai pas fais de tag / version / release. Surtout par manque de temps pour y réfléchir.
 
