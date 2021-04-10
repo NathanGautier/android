@@ -1,6 +1,6 @@
 # Projet Andoid de Nathan Gautier LP DEV CLOUD
 
-/!\ Il y a un panel latéral de navigation, il faut swipper vers la droite pour l'ouvrir /!\
+/!\ Dans l'application, il y a un panel latéral de navigation, il faut swipper vers la droite pour l'ouvrir /!\
 
 ## Normes
 
@@ -52,6 +52,7 @@ Je n'ai pas eu le temps de faire des tests unitaires.
 - On ne peut pas modifier ni supprimer un Objectif.
 - Lorsqu'on créé un objectif, les champs de saisie ne sont vidés.
 - L'avancement des objectifs n'est pas développé.
+- Lorsqu'on ajoute un nouvel objectif, la liste des objectifs (de la page objectif) ne se mettra pas à jour.
 
 ### Activités
 
@@ -59,8 +60,9 @@ Je n'ai pas eu le temps de faire des tests unitaires.
 - Pour la création d'activité :
   - on aura dans tous les cas à renseigner la distance ainsi que la durée, ce n'est pas en fonction du Sport.
 - La page de lancement d'activité n'est pas développée.
-  - Il n'y a pas de suivi GPS / chronomètre
-- L'affichage d'une carte pour voir le suivi GPS n'est pas développé
+  - Il n'y a pas de suivi GPS / chronomètre.
+- L'affichage d'une carte pour voir le suivi GPS n'est pas développé.
+- Lorsqu'on ajoute une nouvelle activité, la liste des activités (de la page activité) ne se mettra pas à jour.
 
 ### Maquettes (images non contractuelles !)
 

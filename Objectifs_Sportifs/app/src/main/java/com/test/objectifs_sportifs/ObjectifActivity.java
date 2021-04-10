@@ -296,7 +296,7 @@ public class ObjectifActivity extends ClasseMere {
 
     // fonction qui met en forme la durée
     private Float miseEnFormeDuree() {
-        TimePicker view = findViewById(R.id.choixDureeAjoutActivite);
+        TimePicker view = findViewById(R.id.choixDureeAjoutObjectif);
         int heure, minute;
         if (Build.VERSION.SDK_INT >= 23 ){
             heure = view.getHour();
